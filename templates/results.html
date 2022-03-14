@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+<div class="container">
+    <div class="mb-5">
+        <a class="link-secondary text-decoration-none" href="{{ url_for('main') }}"><i class="bi bi-arrow-clockwise"></i> بازگشت به صفحه‌ی پیشین</a>
+    </div>
+    <h5 dir="rtl"><i class="bi bi-bar-chart-line-fill"></i> نتیجه</h5>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center mb-3" dir="ltr">
+        <div class="col">
+            <div class="px-0 border rounded">
+                <div class="row p-2">
+                    {% for property in output_total %}
+                    <div class="mb-2">
+                        <span class="fw-bold">MEC</span> = {{ property.MEC }}
+                    </div>
+                    <div class="mb-2">
+                        <span class="fw-bold">RI</span> = {{ property.RI }}
+                        <br>
+                        <span class="alert alert-{% if value == 'error' %}secondary text-muted{% else %}warning{% endif %} m-0 p-0 px-1">{{ property.RI_Label }}</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="fw-bold">PLI</span> = {{ property.PLI }}
+                    </div>
+                    <div>
+                        <span class="fw-bold">NIPI</span> = {{ property.NIPI }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-end mb-3">
+        <button id="toggle" type="button" class="btn btn-outline-secondary">
+            <span id="table-view-toggle">نمایش جدول</span>
+            <span id="element-view-toggle" style="display: none;">نمایش عنصرها</span>
+        </button>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 mb-5" id="element-view" dir="ltr">
+        {% for element, properties in output.items() %}
+        <div class="col">
+            <div class="px-0 border rounded">
+                <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">
+                    {{ element }}
+                </h6>
+                <div class="row px-2">
+                    {% for property, value in properties.items() %}
+                    {% if 'MEC' in property or 'RI' in property or 'PLI' in property or 'NIPI' in property %}
+                    {% else %}
+                    {% if 'Label' in property %}
+                    <div class="m-n2 mx-0 mb-2">
+                        <span class="alert alert-{% if value == 'error' %}secondary text-muted{% else %}warning{% endif %} m-0 p-0 px-1">{{ value }}</span>
+                    </div>
+                    {% else %}
+                    <div class="mb-2">
+                        <span class="fw-bold{% if 'Ci' in property %} text-muted{% endif %}">{{ property }}</span> <span{% if 'Ci' in property %} class="text-muted"{% endif %}>= {{ value }}</span>
+                    </div> 
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row mb-5" style="display: none;" id="table-view" dir="ltr">
+        <div class="col">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Element
+                        </th>
+                        <th scope="col">
+                            C<sub>i</sub>
+                        </th>
+                        <th scope="col">
+                            Local C<sub>i</sub>
+                        </th>
+                        <th scope="col">
+                            C<sub>n</sub>
+                        </th>
+                        <th scope="col">
+                            TR
+                        </th>
+                        <th scope="col">
+                            EF
+                        </th>
+                        <th scope="col">
+                            Local EF
+                        </th>
+                        <th scope="col">
+                            CF
+                        </th>
+                        <th scope="col">
+                            Local CF
+                        </th>
+                        <th scope="col">
+                            I<sub>geo</sub>
+                        </th>
+                        <th scope="col">
+                            Local I<sub>geo</sub>
+                        </th>
+                        <th scope="col">
+                            ERP
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for element, properties in output.items() %}
+                    <tr>
+                        <th scope="row">
+                            {{ element }}
+                        </th>
+                        {% for property, value in properties.items() %}
+                        {% if 'MEC' in property or 'RI' in property or 'PLI' in property or 'NIPI' in property %}
+                        {% else %}
+                        {% if 'Label' in property %}
+                        {% else %}
+                        <td>
+                            {{ value }}
+                        </td>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

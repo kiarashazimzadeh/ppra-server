@@ -1,0 +1,45 @@
+@font-face {
+	font-family: IRANSansX;
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/woff/IRANSansX-Bold.woff') format('woff'),   
+	url('../fonts/woff2/IRANSansX-Bold.woff2') format('woff2');	 
+}
+
+@font-face {
+	font-family: IRANSansX;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/woff/IRANSansX-Regular.woff') format('woff'),   
+	url('../fonts/woff2/IRANSansX-Regular.woff2') format('woff2');	
+}
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/woff/IRANSansXFaNum-Bold.woff') format('woff'),   
+	url('../fonts/woff2/IRANSansXFaNum-Bold.woff2') format('woff2');	 
+}
+
+@font-face {
+	font-family: IRANSansXFaNum;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/woff/IRANSansXFaNum-Regular.woff') format('woff'),   
+	url('../fonts/woff2/IRANSansXFaNum-Regular.woff2') format('woff2');	
+}
+* {
+	font-family: IranSansX;
+}
+.FaNum {
+	font-family: IranSansXFaNum !important;
+}
+.m-n1 {
+	margin-top: -0.25rem !important;
+}
+.m-n2 {
+	margin-top: -0.5rem !important;
+}
+.m-n3 {
+	margin-top: -1rem !important;
+}

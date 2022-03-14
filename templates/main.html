@@ -1,0 +1,402 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+{% from "includes/_formhelpers.html" import render_field %}
+{% from "includes/_formhelpers.html" import render_field_element %}
+
+
+<form method="POST" action="">
+    <div class="container">
+        <div class="alert alert-warning alert-dismissible border-0 fade show">
+            برنامه‌ی پیش روی شما، <strong>نسخه‌ی آزمایشی</strong> است. اگر در کار کردن با آن با مشکلی روبه‌رو شدید از راه «گزارش خطا» که در پایین صفحه قرار دارد، خبر بدهید.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <ul class="list-group list-group-flush rounded mb-5">
+            <li class="list-group-item list-group-item-warning">وارد کردن موردهای ستاره‌دار (<span class="text-danger">*</span>) ضروری است.</li>
+            <li class="list-group-item list-group-item-warning">نام‌ها و نام‌های خانوادگی را به فارسی بنویسید.</li>
+            <li class="list-group-item list-group-item-warning">تاریخ ثبت داده‌ها، تاریخ امروز است.</li>
+        </ul>
+        <h5><i class="bi bi-clipboard2-fill"></i> شناسایی</h5>
+        <div class="row row-cols-1 row-cols-md-3 g-2 mb-5">
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold"><i
+                        class="bi bi-person-fill"></i> کاربر
+                    </h6>
+                    <div class="p-3 pt-0">
+                        {{render_field(form.user_first_name, class_="form-control")}}
+                        {{render_field(form.user_last_name, class_="form-control")}}
+                        {{render_field(form.entry_date, class_="form-control shadow-none FaNum")}}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold"><i
+                        class="bi bi-building"></i> آزمایشگاه
+                    </h6>
+                    <div class="p-3 pt-0">
+                        {{render_field(form.lab_name, class_="form-control")}}
+                        {{render_field(form.tech_first_name, class_="form-control")}}
+                        {{render_field(form.tech_last_name, class_="form-control")}}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold"><i
+                        class="bi bi-pin-map-fill"></i> ایستگاه
+                    </h6>
+                    <div class="p-3 pt-0">
+                        {{render_field(form.station_id, class_="form-select")}}
+                        {{render_field(form.measur_start_date, class_="form-control FaNum")}}
+                        {{render_field(form.measur_end_date, class_="form-control FaNum")}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5 dir="rtl"><i class="bi bi-bar-chart-line-fill"></i> داده‌ها</h5>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-center g-2 mb-4" dir="rtl">
+            <div class="col">
+                <div class="border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">کل غبار ریزشی
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col">
+                            {{render_field_element(form.fd, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="mt-1 text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/m<sup>2</sup></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-2 mb-5" dir="ltr">
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Ag
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.ag_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.ag_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Al
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.al_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.al_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">As
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.as_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.as_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Ba
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.ba_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.ba_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Be
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.be_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.be_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Cd
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.cd_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.cd_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Co
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.co_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.co_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Cr<sup>3+</sup>
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.cr_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.cr_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Cu
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.cu_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.cu_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">F
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.f_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.f_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Fe
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.fe_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.fe_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Hg
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.hg_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.hg_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Mo
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.mo_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.mo_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Ni
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.ni_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.ni_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Pb
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.pb_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.pb_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Sb
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.sb_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.sb_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Se
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.se_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.se_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Sn
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.sn_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.sn_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Ti
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.ti_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.ti_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">V
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.v_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.v_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="px-0 border rounded">
+                    <h6 class="py-2 bg-secondary rounded-top text-center text-white fw-bold">Zn
+                    </h6>
+                    <div class="row g-2 px-2">
+                        <div class="col-6">
+                            {{render_field_element(form.zn_ci, class_="form-control")}}
+                        </div>
+                        <div class="col-6">
+                            {{render_field_element(form.zn_local_ci, class_="form-control")}}
+                        </div>
+                    </div>
+                    <div class="text-muted text-center" style="font-size: 80%;" dir="rtl">واحد: mg/Kg</div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-auto justify-content-center g-2 mb-5">
+            <div class="col">
+                <div class="px-0">
+                    {{render_field(form.submit, class_="btn btn-success")}}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
